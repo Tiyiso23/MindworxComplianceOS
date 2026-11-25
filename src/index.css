@@ -1,0 +1,299 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================================
+   Single Theme Definition (White Theme & Black Theme)
+   All surfaces, borders, text, accents, and WCAG AA status palettes derive
+   from these CSS variables. Printing always resets to the white theme.
+   ============================================================================ */
+
+:root {
+  color-scheme: light;
+
+  /* Core Surfaces */
+  --bg-page: #ffffff;
+  --bg-card: #ffffff;
+  --bg-subtle: #f8fafc;
+  --bg-muted: #f1f5f9;
+  --bg-hover: #f8fafc;
+  --bg-backdrop: rgba(15, 23, 42, 0.45);
+
+  /* Header & Primary Navy Accents */
+  --bg-header: #0f2342;
+  --bg-header-border: #1b365d;
+  --text-header: #ffffff;
+  --text-header-muted: #cbd5e1;
+  --bg-accent: #0f2342;
+  --bg-accent-hover: #1b365d;
+  --text-on-accent: #ffffff;
+  --bg-accent-soft: rgba(15, 35, 66, 0.06);
+  --border-accent-soft: rgba(27, 54, 93, 0.22);
+
+  /* Borders */
+  --border-subtle: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  /* Typography */
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #475569;
+  --text-accent: #0f2342;
+  --text-link: #1d4ed8;
+  --text-link-hover: #1e3a8a;
+  --focus-ring: #0f2342;
+
+  /* Inline Semantic Tones (>= 4.5:1 on white & subtle) */
+  --tone-green: #047857;
+  --tone-yellow: #b45309;
+  --tone-red: #b91c1c;
+  --tone-pending: #6b21a8;
+
+  /* Semantic Status Surfaces (Badge, Alert, Rule Cards >= 4.5:1) */
+  --status-green-bg: #ecfdf5;
+  --status-green-border: #a7f3d0;
+  --status-green-text: #065f46;
+  --status-green-icon: #059669;
+  --status-green-solid: #047857;
+  --status-green-solid-text: #ffffff;
+
+  --status-yellow-bg: #fffbeb;
+  --status-yellow-border: #fde68a;
+  --status-yellow-text: #78350f;
+  --status-yellow-icon: #d97706;
+  --status-yellow-solid: #f59e0b;
+  --status-yellow-solid-text: #0f172a;
+
+  --status-red-bg: #fef2f2;
+  --status-red-border: #fecaca;
+  --status-red-text: #991b1b;
+  --status-red-icon: #dc2626;
+  --status-red-solid: #b91c1c;
+  --status-red-solid-text: #ffffff;
+
+  --status-pending-bg: #faf5ff;
+  --status-pending-border: #e9d5ff;
+  --status-pending-text: #581c87;
+  --status-pending-icon: #7e22ce;
+  --status-pending-solid: #7e22ce;
+  --status-pending-solid-text: #ffffff;
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* Pure black canvas & near-black cards (#0A0A0A - #121212) */
+  --bg-page: #000000;
+  --bg-card: #0a0a0a;
+  --bg-subtle: #121212;
+  --bg-muted: #18181b;
+  --bg-hover: #141418;
+  --bg-backdrop: rgba(0, 0, 0, 0.78);
+
+  /* Header & Softer Navy/Blue Accents readable on black */
+  --bg-header: #0a0a0a;
+  --bg-header-border: #262626;
+  --text-header: #ffffff;
+  --text-header-muted: #b4b4be;
+  --bg-accent: #1e40af;
+  --bg-accent-hover: #2563eb;
+  --text-on-accent: #ffffff;
+  --bg-accent-soft: rgba(59, 130, 246, 0.14);
+  --border-accent-soft: rgba(96, 165, 250, 0.35);
+
+  /* Thin dark-grey borders */
+  --border-subtle: #262626;
+  --border-strong: #3a3a40;
+
+  /* Crisp white & >= 4.5:1 muted typography */
+  --text-primary: #ffffff;
+  --text-secondary: #e4e4e7;
+  --text-muted: #a1a1aa;
+  --text-accent: #93c5fd;
+  --text-link: #60a5fa;
+  --text-link-hover: #93c5fd;
+  --focus-ring: #93c5fd;
+
+  /* Inline Semantic Tones (>= 4.5:1 on #000000 / #0A0A0A / #121212) */
+  --tone-green: #4ade80;
+  --tone-yellow: #fbbf24;
+  --tone-red: #f87171;
+  --tone-pending: #c084fc;
+
+  /* Semantic Status Surfaces tuned for Black theme (>= 4.5:1) */
+  --status-green-bg: #052e1c;
+  --status-green-border: #166534;
+  --status-green-text: #86efac;
+  --status-green-icon: #4ade80;
+  --status-green-solid: #15803d;
+  --status-green-solid-text: #ffffff;
+
+  --status-yellow-bg: #291804;
+  --status-yellow-border: #92400e;
+  --status-yellow-text: #fcd34d;
+  --status-yellow-icon: #fbbf24;
+  --status-yellow-solid: #f59e0b;
+  --status-yellow-solid-text: #09090b;
+
+  --status-red-bg: #2c0b0e;
+  --status-red-border: #991b1b;
+  --status-red-text: #fca5a5;
+  --status-red-icon: #f87171;
+  --status-red-solid: #b91c1c;
+  --status-red-solid-text: #ffffff;
+
+  --status-pending-bg: #1e0b2e;
+  --status-pending-border: #6b21a8;
+  --status-pending-text: #d8b4fe;
+  --status-pending-icon: #c084fc;
+  --status-pending-solid: #7e22ce;
+  --status-pending-solid-text: #ffffff;
+}
+
+@theme {
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --color-navy-950: #091529;
+  --color-navy-900: #0f2342;
+  --color-navy-800: #1b365d;
+  --color-navy-700: #26487a;
+}
+
+@theme inline {
+  --color-canvas: var(--bg-page);
+  --color-card: var(--bg-card);
+  --color-subtle: var(--bg-subtle);
+  --color-muted-surface: var(--bg-muted);
+  --color-hover-surface: var(--bg-hover);
+  --color-backdrop: var(--bg-backdrop);
+
+  --color-topbar: var(--bg-header);
+  --color-topbar-border: var(--bg-header-border);
+  --color-topbar-text: var(--text-header);
+  --color-topbar-muted: var(--text-header-muted);
+
+  --color-accent: var(--bg-accent);
+  --color-accent-hover: var(--bg-accent-hover);
+  --color-on-accent: var(--text-on-accent);
+  --color-accent-soft: var(--bg-accent-soft);
+  --color-accent-soft-border: var(--border-accent-soft);
+
+  --color-line: var(--border-subtle);
+  --color-line-strong: var(--border-strong);
+
+  --color-ink: var(--text-primary);
+  --color-ink-secondary: var(--text-secondary);
+  --color-ink-muted: var(--text-muted);
+  --color-ink-accent: var(--text-accent);
+  --color-ink-link: var(--text-link);
+  --color-ink-link-hover: var(--text-link-hover);
+  --color-focus-ring: var(--focus-ring);
+
+  --color-tone-green: var(--tone-green);
+  --color-tone-yellow: var(--tone-yellow);
+  --color-tone-red: var(--tone-red);
+  --color-tone-pending: var(--tone-pending);
+
+  --color-status-green-bg: var(--status-green-bg);
+  --color-status-green-border: var(--status-green-border);
+  --color-status-green-text: var(--status-green-text);
+  --color-status-green-icon: var(--status-green-icon);
+  --color-status-green-solid: var(--status-green-solid);
+  --color-status-green-solid-text: var(--status-green-solid-text);
+
+  --color-status-yellow-bg: var(--status-yellow-bg);
+  --color-status-yellow-border: var(--status-yellow-border);
+  --color-status-yellow-text: var(--status-yellow-text);
+  --color-status-yellow-icon: var(--status-yellow-icon);
+  --color-status-yellow-solid: var(--status-yellow-solid);
+  --color-status-yellow-solid-text: var(--status-yellow-solid-text);
+
+  --color-status-red-bg: var(--status-red-bg);
+  --color-status-red-border: var(--status-red-border);
+  --color-status-red-text: var(--status-red-text);
+  --color-status-red-icon: var(--status-red-icon);
+  --color-status-red-solid: var(--status-red-solid);
+  --color-status-red-solid-text: var(--status-red-solid-text);
+
+  --color-status-pending-bg: var(--status-pending-bg);
+  --color-status-pending-border: var(--status-pending-border);
+  --color-status-pending-text: var(--status-pending-text);
+  --color-status-pending-icon: var(--status-pending-icon);
+  --color-status-pending-solid: var(--status-pending-solid);
+  --color-status-pending-solid-text: var(--status-pending-solid-text);
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Smooth 180ms colour transition across themes */
+@media (prefers-reduced-motion: no-preference) {
+  body,
+  .theme-surface,
+  .theme-surface * {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: 180ms;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Executive one-page print layout: always force white theme */
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+
+  :root,
+  .dark {
+    color-scheme: light !important;
+    --bg-page: #ffffff !important;
+    --bg-card: #ffffff !important;
+    --bg-subtle: #f8fafc !important;
+    --border-subtle: #e2e8f0 !important;
+    --border-strong: #cbd5e1 !important;
+    --text-primary: #0f172a !important;
+    --text-secondary: #334155 !important;
+    --text-muted: #475569 !important;
+    --text-accent: #0f2342 !important;
+  }
+
+  body,
+  .theme-surface,
+  .theme-surface * {
+    transition: none !important;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    font-size: 11px !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .print-break-inside-avoid {
+    break-inside: avoid;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Mindworx Compliance Dashboard",
+  "description": "Executive statutory and corporate compliance tracking dashboard for Mindworx Consulting and Mindworx Academy.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
